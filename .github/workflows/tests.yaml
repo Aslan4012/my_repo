@@ -34,7 +34,7 @@ jobs:
 
     - name: Preprocess data
       run: |
-        uv run python -m src.my_project.data preprocess_data data/raw data/processed
+        uv run python -m src.my_project.data data/raw data/processed
 
     - name: Test with pytest
       run: |
