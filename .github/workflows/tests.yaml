@@ -8,17 +8,20 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ["macos-latest"]
 
     steps:
-    - name: Checkout
+    - name: checkout
       uses: actions/checkout@v5
 
-    - name: Setup uv
+    - name: setup uv
       uses: astral-sh/setup-uv@v7
       with:
         python-version: 3.12
+        enable-cache: true
 
     - name: Install dependencies
       run: |
