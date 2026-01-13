@@ -24,6 +24,14 @@ jobs:
       run: |
         uv sync --dev --locked
 
+    - name: Create datadir
+      run: |
+        mkdir -p data/raw data/processed
+
+    - name: Get data
+      run: |
+        uv run gdown --folder 'https://drive.google.com/drive/folders/1ddWeCcsfmelqxF8sOGBihY9IU98S9JRP?usp=sharing' -O data/raw
+
     - name: Preprocess data
       run: |
         uv run python -m src.my_project.data preprocess_data data/raw data/processed
